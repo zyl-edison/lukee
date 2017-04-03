@@ -1,0 +1,15 @@
+{
+  "undef": true,
+  "unused": true,
+  "eqeqeq": true,
+  "esversion": 6,
+  "forin": true,
+  "node": true,
+  "varstmt": true,
+  "debug": true,
+  "globals": {
+    "LUKEE": true
+  },
+  "mocha": true,
+  "expr": true
+}

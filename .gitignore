@@ -1,0 +1,7 @@
+node_modules
+.DS_Store
+*.patch
+*.diff
+log
+application/converage
+.nyc_output

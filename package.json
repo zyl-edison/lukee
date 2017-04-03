@@ -1,0 +1,44 @@
+{
+  "name": "Lukee",
+  "version": "1.0.0",
+  "description": "Lukee is a powerful ES6 based web api framework built on top of nodejs and express",
+  "scripts": {
+    "start": "gulp develop"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:zyl-edison/lukee.git"
+  },
+  "author": {
+    "name": "Edison Li",
+    "email": "zyl.edison@gmail.com",
+    "url": ""
+  },
+  "homepage": "",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.16.0",
+    "express": "^4.14.0",
+    "moment": "^2.17.1",
+    "mongoose": "^4.7.8",
+    "morgan": "^1.7.0",
+    "q": "^1.5.0",
+    "simple-node-logger": "^0.93.16"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-git": "^2.0.1",
+    "gulp-jshint": "^2.0.4",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-shell": "^0.6.3",
+    "jshint": "^2.9.4",
+    "jshint-stylish": "^2.2.1",
+    "mocha": "^3.2.0",
+    "nyc": "^10.1.2",
+    "run-sequence": "^1.2.2",
+    "sinon": "^2.1.0"
+  }
+}
