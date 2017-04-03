@@ -14,7 +14,7 @@
     "email": "zyl.edison@gmail.com",
     "url": ""
   },
-  "homepage": "",
+  "homepage": "https://zyl-edison.github.io/lukee/",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.16.0",
