@@ -9,8 +9,24 @@ const clean = require('gulp-clean');
 const runSequence = require('run-sequence');
 const shell = require('gulp-shell');
 
+// Shared tasks
 gulp.task('init', shell.task(['mkdir -p ./log/app', 'touch ./log/traffics.log']));
 
+gulp.task('systemInit', () => {
+  global.LUKEE = {};
+
+  const System = require('./system');
+  const sys = new System();
+
+  sys.init();
+});
+
+gulp.task('systemStart', () => {
+  LUKEE.server.get('apiServer').start();
+  LUKEE.server.get('databaseServer').start();
+});
+
+// Development
 gulp.task('lint', () => {
   return gulp
           .src([
@@ -24,12 +40,15 @@ gulp.task('lint', () => {
           .pipe(jshint.reporter(stylish));
 });
 
-gulp.task('server', () => {
+gulp.task('devServer', () => {
 
   const stream = nodemon({
     script: 'index.js',
     ext: 'js',
-    tasks: ['lint']
+    tasks: ['lint'],
+    env: {
+      NODE_SERVER_ENV: 'development'
+    }
   });
 
   stream.on('restart', () => {
@@ -40,7 +59,20 @@ gulp.task('server', () => {
   });
 });
 
-gulp.task('develop', ['init', 'lint', 'server']);
+gulp.task('develop', ['init', 'lint', 'devServer']);
+
+// Test
+gulp.task('test', callback => {
+  process.env.NODE_SERVER_ENV = 'test';
+  runSequence('systemInit', 'systemStart', callback);
+});
+
+// Production
+gulp.task('production', callback => {
+  process.env.NODE_SERVER_ENV = 'production';
+  runSequence('systemInit', 'systemStart', callback);
+});
+
 
 // Framework Upgrade
 gulp.task('copyFramework', () => {
@@ -70,5 +102,3 @@ gulp.task('upgrade', callback => {
     runSequence('copyFramework', 'removeClonedFramework', callback);
   });
 });
-
-// applicationTest [applicationUnitTest, applicationEndpointTest]
